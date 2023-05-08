@@ -1,0 +1,26 @@
+.Footer {
+  width: 100%;
+  color: black;
+  background-color: gray;
+
+  .footer-container {
+    background-color: black;
+    width: 95%;
+    margin: 2em;
+    color: white;
+  }
+
+  .flex-cv {
+    display: flex;
+  }
+
+  .logo-zone {
+    background-color: red;
+    width: 20%;
+  }
+
+  .footer-content {
+    background-color: yellow;
+    width: 80%;
+  }
+}
