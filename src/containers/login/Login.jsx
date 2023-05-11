@@ -5,6 +5,7 @@ import tokenStorageService from "../../_services/tokenStorageService";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateAuthStoreStateLogIn } from "../../features/authentication/updateAuthState";
+import logoImage from "../../../public/images/logo.jpg";
 
 function Login() {
   const initialFormValues = {
@@ -88,7 +89,7 @@ function Login() {
               </label>
               <input
                 id="password"
-                type="text"
+                type="password"
                 name="password"
                 value={formValues.password}
                 onChange={handleChange}
@@ -102,7 +103,7 @@ function Login() {
           {loginError && <p style={{ color: "red" }}>{loginError}</p>}
         </div>
         <div className="container-image">
-          <h3>Aqui va una foto</h3>
+          <img src={logoImage} alt="" className="logoImage"/>
         </div>
       </div>
     </div>
