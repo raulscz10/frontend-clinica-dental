@@ -1,26 +1,13 @@
 .Footer {
   width: 100%;
-  color: black;
-  background-color: gray;
+  height: 25%;
+  color: white;
+  background-color: black;
 
-  .footer-container {
-    background-color: black;
-    width: 95%;
-    margin: 2em;
-    color: white;
-  }
-
-  .flex-cv {
+  .footer-content{
     display: flex;
+    justify-content: center;
+    align-content: center;
   }
 
-  .logo-zone {
-    background-color: red;
-    width: 20%;
-  }
-
-  .footer-content {
-    background-color: yellow;
-    width: 80%;
-  }
 }

@@ -1,9 +1,16 @@
 .Login {
-    h1 {
-      color: #18354f;
-    }
+  height: 600px;
+  h1 {
+    color: #18354f;
+  }
+  .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     .login-container {
-      width: 100%;
+      width: 50%;
+      height: 100%;
       border: 3px solid #1e4263;
       background-color: #c4daed;
     }
@@ -13,13 +20,17 @@
       justify-content: center;
       align-items: center;
     }
-  
+
+    .icon {
+      font-size: 1.2em;
+    }
+
     .label-login {
       font-size: 1.2em;
       font-weight: bold;
       color: #18354f;
     }
-  
+
     .input-login {
       width: 250px;
       height: 30px;
@@ -28,7 +39,7 @@
       color: white;
       background-color: #1e4263;
     }
-  
+
     .btn-login {
       width: 250px;
       height: 40px;
@@ -36,11 +47,17 @@
       margin: 1em;
       color: white;
       background-color: #1e4263;
-  
+
       &:hover {
         border: 2px solid black;
         background-color: #3d85c6;
         font-weight: bold;
       }
     }
+
+    .container-image {
+      height: 100%;
+      width: 50%;
+    }
   }
+}
