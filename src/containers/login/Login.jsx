@@ -9,8 +9,8 @@ import logoImage from "../../../public/images/logo.jpg";
 
 function Login() {
   const initialFormValues = {
-    email: "admin@admin.com",
-    password: "12345678",
+    user_gmail: "eugeni@admin.com",
+    user_password: "root",
   };
 
   // HOOKS
@@ -20,7 +20,7 @@ function Login() {
 
   const authState = useSelector((state) => state.auth);
 
-  const isAdmin = authState.userInfo.role == "admin";
+  const isAdmin = authState.userInfo.role == 1;
 
   const navigate = useNavigate();
 
@@ -34,15 +34,15 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const credentials = {
-      email: formValues.email,
-      password: formValues.password,
+      user_gmail: formValues.user_gmail,
+      user_password: formValues.user_password,
     };
     login(credentials);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
+    console.log(name, value); //TODO
     setFormValues({
       ...formValues,
       [name]: value, //key: value
@@ -77,8 +77,8 @@ function Login() {
               <input
                 id="email"
                 type="email"
-                name="email"
-                value={formValues.email}
+                name="user_gmail"
+                value={formValues.user_gmail}
                 onChange={handleChange}
                 className="input-login"
               />
@@ -90,8 +90,8 @@ function Login() {
               <input
                 id="password"
                 type="password"
-                name="password"
-                value={formValues.password}
+                name="user_password"
+                value={formValues.user_password}
                 onChange={handleChange}
                 className="input-login"
               />

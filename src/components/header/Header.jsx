@@ -17,7 +17,7 @@ function Header() {
   const navigate = useNavigate();
   const isLoggedIn = authState.isLoggedIn;
   const { name, role } = authState.userInfo;
-  const isAdmin = role == "admin";
+  const isAdmin = role == 1;
 
   //Handlers
   const handleLogout = () => {

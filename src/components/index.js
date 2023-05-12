@@ -1,4 +1,5 @@
 import Header from "./header";
-import Footer from "./footer"
+import Footer from "./footer";
+import UsersList from "./users-list";
 
-export { Header, Footer };
+export { Header, Footer, UsersList };

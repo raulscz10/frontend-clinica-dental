@@ -9,9 +9,9 @@ export const updateAuthStoreStateLogIn = (token) => {
   store.dispatch(setIsLoggedIn(true));
   store.dispatch(
     setUserInfo({
-      id: myDecodedToken.userId,
+      id: myDecodedToken.user_id,
       name: myDecodedToken.userName,
-      role: myDecodedToken.userRole,
+      role: myDecodedToken.user_rol,
     })
   );
 

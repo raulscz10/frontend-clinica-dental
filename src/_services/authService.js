@@ -5,8 +5,8 @@ const authService = {};
 
 authService.login = async (credentials) => {
     const body = {
-        email : credentials.email,
-        password : credentials.password,
+        user_gmail : credentials.user_gmail,
+        user_password : credentials.user_password,
     };
 
     return (await axios.post(global.BASE_URL + "/auth/login", body)).data;
