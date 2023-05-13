@@ -3,11 +3,12 @@ import "./UsersList.scss";
 
 
 function UsersList({users}) {
+  //console.log(users);
   return (
     <div className="UsersList">
       <table className="table">
         <thead>
-          <tr colSpan={8}>
+          <tr colSpan={5}>
             <th>
               <div className="tableTitle"> Users </div>
             </th>
@@ -22,7 +23,7 @@ function UsersList({users}) {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr data-user-id={user.id} key={user.id} className="tr-table">
+            <tr key={user.id} className="tr-table">
               <td>{user.id}</td>
               <td>
                 {user.user_name} {user.user_surname}
