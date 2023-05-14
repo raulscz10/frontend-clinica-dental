@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Register.scss";
 import authService from "../../_services/authService";
 import { useNavigate } from "react-router-dom";
-import { updateAuthStoreStateLogIn } from "../../features/authentication/updateAuthState";
 
 function Register() {
   const initialFormValues = {
     user_name: "",
+    user_surname: "",
     user_password: "",
     user_age: "1",
     user_phone: "",
     user_gmail: "",
-    user_password: "",
   };
 
   // HOOKS
@@ -26,11 +25,11 @@ function Register() {
     e.preventDefault();
     const credentials = {
       user_name: formValues.user_name,
-      user_password: formValues.user_surname,
+      user_surname: formValues.user_surname,
+      user_password: formValues.user_password,
       user_age: formValues.user_age,
       user_phone: formValues.user_phone,
       user_gmail: formValues.user_gmail,
-      user_password: formValues.user_password,
     };
     singIn(credentials);
   };
@@ -46,7 +45,6 @@ function Register() {
   const singIn = async (credentials) => {
     try {
       const response = await authService.signIn(credentials);
-      const token = response.token;
       setSignInError(null);
       navigate("/login");
     } catch (error) {
