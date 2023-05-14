@@ -48,8 +48,7 @@ function Register() {
       const response = await authService.signIn(credentials);
       const token = response.token;
       setSignInError(null);
-      updateAuthStoreStateLogIn(token);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setSignInError(error.response.data.message);

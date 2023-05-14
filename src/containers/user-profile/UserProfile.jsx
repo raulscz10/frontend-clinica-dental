@@ -6,7 +6,7 @@ import userService from "../../_services/userService";
 
 function UserProfile() {
   //HOOKS
-  const [profile, setProfile] = useState([]);
+  const [profile, setProfile] = useState({});
   const authState = useSelector((state) => state.auth);
 
   useEffect(() => {

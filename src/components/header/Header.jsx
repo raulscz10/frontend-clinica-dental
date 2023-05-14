@@ -18,6 +18,7 @@ function Header() {
   const isLoggedIn = authState.isLoggedIn;
   const { name, role } = authState.userInfo;
   const isAdmin = role == 1;
+  const isUser = role == 3;
 
   //Handlers
   const handleLogout = () => {
@@ -41,6 +42,15 @@ function Header() {
                 <NavLink to="/admin">
                   <RiAdminLine className="icon" />
                   Admin
+                </NavLink>
+              </li>
+            </>
+          )}
+          {isUser && (
+            <>
+              <li className="nav-item">
+                <NavLink to="/citas">
+                  Citas
                 </NavLink>
               </li>
             </>

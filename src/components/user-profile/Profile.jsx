@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.scss";
 import profileImage from "../../../public/images/userProfile.png";
 
 function Profile({ profile }) {
+    //HOOKS
+    const [showForm, setShowForm] = useState(false);
+
+    const handleShowForm = () =>{
+        setShowForm(true);
+    }
+
+    const handleHiddeForm = () =>{
+        setShowForm(false);
+    }
+
   return (
     <div className='Profile'>
         <div className="container-myProfile">
@@ -24,15 +35,28 @@ function Profile({ profile }) {
                     <div className="text-info">
                         <p>Telefono: {profile.user_phone}</p>
                     </div>
-                    <div className="text-info">
-                        <p>Dirección: {profile.direction.street}, {profile.direction.number}, {profile.direction.postal}</p>
-                    </div>
                 </div>
             </div>
-            <div className="footer-myProfile">
-                <button className="btn-myProfile">Modificar Perfil</button>
-            </div>
+            {showForm && (
+                <>
+                    <div className="footer-myProfile">
+                        <button className="btn-myProfile" onClick={handleHiddeForm}>Modificar Perfil</button>
+                    </div>
+                </>
+            )}
+            {!showForm && (
+                <>
+                    <div className="footer-myProfile">
+                        <button className="btn-myProfile" onClick={handleShowForm}>Modificar Perfil</button>
+                    </div>
+                </>
+            )}
         </div>
+        {showForm && (
+            <>
+              <p>Hola</p>
+            </>
+        )}
     </div>
   )
 }
