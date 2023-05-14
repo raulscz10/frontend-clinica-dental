@@ -42,7 +42,6 @@ function Login() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value); //TODO
     setFormValues({
       ...formValues,
       [name]: value, //key: value
@@ -54,7 +53,6 @@ function Login() {
     try {
       const response = await authService.login(credentials);
       const token = response.token;
-      //tokenStorageService.save(token);
       setLoginError(null);
       updateAuthStoreStateLogIn(token);
     } catch (error) {

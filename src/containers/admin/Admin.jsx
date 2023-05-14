@@ -44,7 +44,7 @@ function Admin() {
     try {
       const response = await adminService.getAllUsers(token);
       console.log(response);
-      setUsers(response.results);
+      setUsers(response);
     } catch (error) {
       console.log(error);
     }
@@ -54,7 +54,7 @@ function Admin() {
     try {
       const response = await adminService.getAllRoles(token);
       console.log(response);
-      setRoles(response.result);
+      setRoles(response);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +64,7 @@ function Admin() {
     try {
       const response = await adminService.getAllTreatments(token);
       console.log(response);
-      setTreatments(response.result);
+      setTreatments(response);
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +74,7 @@ function Admin() {
     try {
       const response = await adminService.getAllDates(token);
       console.log(response);
-      setDates(response.result);
+      setDates(response);
     } catch (error) {
       console.log(error);
     }
@@ -84,7 +84,7 @@ function Admin() {
     try {
       const response = await adminService.getAllDirections(token);
       console.log(response);
-      setDirections(response.result);
+      setDirections(response);
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +94,7 @@ function Admin() {
     try {
       const response = await adminService.getAllSchedules(token);
       console.log(response);
-      setSchedules(response.result);
+      setSchedules(response);
     } catch (error) {
       console.log(error);
     }
@@ -104,7 +104,7 @@ function Admin() {
     try {
       const response = await adminService.getAllInquiries(token);
       console.log(response);
-      setInquiries(response.result);
+      setInquiries(response);
     } catch (error) {
       console.log(error);
     }
