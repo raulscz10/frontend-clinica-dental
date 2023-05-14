@@ -7,6 +7,7 @@ import InquiriesList from "./inquiries-list";
 import SchedulesList from "./schedules-list";
 import TreatmentsList from "./treatments-list";
 import DatesList from "./dates-list";
+import Profile from "./user-profile";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   SchedulesList,
   TreatmentsList,
   DatesList,
+  Profile
 };
