@@ -24,6 +24,8 @@ function Profile({ profile }) {
 
   const authState = useSelector((state) => state.auth);
 
+  const isUser = authState.userInfo.role == 3;
+
   const navigate = useNavigate();
 
   const handleShowForm = () => {
@@ -62,7 +64,7 @@ function Profile({ profile }) {
       setUpdateError(null);
       navigate("/");
     } catch (error) {
-      console.log(error);   //TODO
+      console.log(error); //TODO
       setUpdateError(error.response.data.message);
     }
   };
@@ -92,22 +94,26 @@ function Profile({ profile }) {
             </div>
           </div>
         </div>
-        {showForm && (
+        {isUser && (
           <>
-            <div className="footer-myProfile">
-              <button className="btn-myProfile" onClick={handleHiddeForm}>
-                Modificar Perfil
-              </button>
-            </div>
-          </>
-        )}
-        {!showForm && (
-          <>
-            <div className="footer-myProfile">
-              <button className="btn-myProfile" onClick={handleShowForm}>
-                Modificar Perfil
-              </button>
-            </div>
+            {showForm && (
+              <>
+                <div className="footer-myProfile">
+                  <button className="btn-myProfile" onClick={handleHiddeForm}>
+                    Modificar Perfil
+                  </button>
+                </div>
+              </>
+            )}
+            {!showForm && (
+              <>
+                <div className="footer-myProfile">
+                  <button className="btn-myProfile" onClick={handleShowForm}>
+                    Modificar Perfil
+                  </button>
+                </div>
+              </>
+            )}
           </>
         )}
       </div>

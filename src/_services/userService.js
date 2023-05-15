@@ -19,7 +19,20 @@ userService.updateMyProfile = async (id, credentials) => {
     user_gmail: credentials.user_gmail,
   };
 
-  return (await axios.put(global.BASE_URL + `/api/customer/updateUserProfile/${id}`, body));
+  return await axios.put(
+    global.BASE_URL + `/api/customer/updateUserProfile/${id}`,
+    body
+  );
+};
+
+userService.getAllDatesUsers = async (token, id) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return(await axios.get(global.BASE_URL + `/api/customer/viewDates/${id}`,config)).data;
 };
 
 export default userService;

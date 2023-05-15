@@ -8,6 +8,7 @@ import SchedulesList from "./schedules-list";
 import TreatmentsList from "./treatments-list";
 import DatesList from "./dates-list";
 import Profile from "./user-profile";
+import UserDate from "./user-dates";
 
 export {
   Header,
@@ -19,5 +20,6 @@ export {
   SchedulesList,
   TreatmentsList,
   DatesList,
-  Profile
+  Profile,
+  UserDate,
 };

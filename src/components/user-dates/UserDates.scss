@@ -1,0 +1,55 @@
+.UserDates {
+  .icon {
+    font-size: 1.3em;
+  }
+
+  table {
+    background-color: #e5e5e5;
+    width: 100%;
+    border: 3px solid black;
+  }
+
+  .tableTitle {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: black;
+  }
+
+  .th-table {
+    font-size: 1.15em;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: black;
+    background-color: grey;
+    border: 1px solid black;
+  }
+
+  .table td {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    color: #c9ba8a;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border: 1px solid black;
+  }
+
+  .btn-table {
+    border-style: none;
+    background-color: transparent;
+
+    &:hover {
+      background-color: #ffffff80;
+      border-radius: 50%;
+    }
+  }
+
+  .tr-table:hover {
+    background-color: #b2b2b2;
+  }
+}

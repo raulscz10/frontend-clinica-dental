@@ -1,15 +1,15 @@
 import React from "react";
-import "./DatesList.scss";
-import { dateFormat } from "../../_util/util";
+import "./UserDates.scss";
 
-function DatesList({ dates }) {
+function UserDates({ dates }) {
+  console.log(dates);
   return (
     <div className="DatesList">
       <table className="table">
         <thead>
           <tr colSpan={6}>
             <th>
-              <div className="tableTitle"> Dates </div>
+              <div className="tableTitle"> My Dates </div>
             </th>
           </tr>
           <tr className="tr-table">
@@ -25,7 +25,7 @@ function DatesList({ dates }) {
           {dates.map((date) => (
             <tr key={date.id} className="tr-table">
               <td>{date.id}</td>
-              <td>{dateFormat(date.date)}</td>
+              <td>{date.date}</td>
               <td>{date.id_treatment}</td>
               <td>{date.id_patient}</td>
               <td>{date.id_schedule}</td>
@@ -38,4 +38,4 @@ function DatesList({ dates }) {
   );
 }
 
-export default DatesList;
+export default UserDates;
