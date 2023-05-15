@@ -6,13 +6,73 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
+  //HOOKS
   const [showForm, setShowForm] = useState(false);
+
+  const [showFormUpdate, setShowFormUpdate] = useState(false);
+
+  const [createError, setCreateError] = useState(null);
+
   const authState = useSelector((state) => state.auth);
-  const id = dates.id;
 
+  const isUser = authState.userInfo.role == 3;
 
-  useEffect(() => {}, []);
+  const navigate = useNavigate();
 
+  const initialFormValues = {
+    date: "",
+    id_treatment: "",
+    id_patient: authState.userInfo.id,
+    id_schedule: "",
+    id_inquiries: 1
+  };
+
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [formValueUpdate, setFormValuesUpdate] = useState(initialFormValues);
+
+  useEffect(() => {
+    if (!isUser) {
+      navigate("/");
+    }
+  }, []);
+
+  //Actualizar
+  const handleShowFormUpdate = () => {
+    setShowFormUpdate(true);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const credentials = {
+      date: formValueUpdate.date,
+      id_treatment: formValueUpdate.id_treatment,
+      id_patient: authState.userInfo.id,
+      id_schedule: formValueUpdate.id_schedule,
+      id_inquiries: 1
+    };
+    handleUpdateDate(credentials);
+    window.location.reload();
+  };
+
+  const handleChangeUpdate = (e) => {
+    const { name, value } = e.target;
+    setFormValuesUpdate({
+      ...formValues,
+      [name]: value, //key: value
+    });
+  };
+
+  const handleUpdateDate = async () => {
+    try {
+      const response = await userService.updateDate(authState.userToken, dateId);
+      window.location.reload();
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Eliminar
   const handleDelete = async () => {
     try {
       const response = await userService.deleteDate(authState.userToken, dateId);
@@ -23,8 +83,46 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
     }
   };
 
+  //Crear
   const handleShowForm = () => {
     setShowForm(true);
+  };
+
+  const handleHiddeForm = () => {
+    setShowForm(false);
+  };
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    const credentials = {
+      date: "2023-04-18",
+      id_treatment: 2,
+      id_patient: authState.userInfo.id,
+      id_schedule: 2,
+      id_inquiries: 1
+    };
+    createUserDate(credentials);
+    window.location.reload();
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value, //key: value
+    });
+  };
+
+  const createUserDate = async () => {
+    try {
+      const response = await userService.createUserDate(authState.userToken);
+      console.log(response); //TODO
+      setCreateError(null);
+      navigate("/");
+    } catch (error) {
+      console.log(error); //TODO
+      setCreateError(error.response.data.message);
+    }
   };
 
   return (
@@ -57,7 +155,7 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
               <td>{date.name_treatment}</td>
               <td>
                 {showDeleteIcon &&(
-                  <button className="btn-table update">
+                  <button className="btn-table update" onClick={handleShowFormUpdate}>
                     <RiBallPenLine className="icon" />
                   </button>
                 )}
@@ -73,72 +171,51 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
           ))}
         </tbody>
       </table>
-      <div className="createSection">
-        <button className="btn-create" onClick={handleShowForm}>Crear Cita</button>
-      </div>
+      {!showForm &&(
+        <div className="createSection">
+          <button className="btn-create" onClick={handleShowForm}>Crear Cita</button>
+        </div>
+      )}
+      {showForm &&(
+        <div className="createSection">
+          <button className="btn-create" onClick={handleHiddeForm}>Crear Cita</button>
+        </div>
+      )}
       {showForm && (
         <>
           <div className="create-container">
-            <form noValidate>
-              <h3>Formulario</h3>
+            <form noValidate onSubmit={handleCreate}>
+              <h3>Formulario Crear Cita</h3>
               <div className="section-container">
                 <div className="label-section">
-                  <label className="register-label">Nombre</label>
+                  <label className="register-label">Fecha Cita</label>
                   <input
-                    type="text"
-                    name="user_name"
+                    type="date"
+                    name="date"
                     className="register-input"
-                    placeholder="Nombre..."
+                    value={formValues.date}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="label-section">
-                  <label className="register-label">Apellidos</label>
-                  <input
-                    type="text"
-                    name="user_surname"
-                    className="register-input"
-                    placeholder="Apellidos..."
-                  />
-                </div>
-              </div>
-              <div className="section-container">
-                <div className="label-section">
-                  <label className="register-label">Edad</label>
-                  <input
-                    type="number"
-                    name="user_age"
-                    className="register-input"
-                    placeholder="Edad..."
-                  />
+                  <label className="register-label">Tratamiento</label>
+                  <select name="id_treatment" className="register-input" onChange={handleChange}>
+                    <option value={formValues.id_treatment}>Valor Inicial</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
                 </div>
                 <div className="label-section">
-                  <label className="register-label">Telefono</label>
-                  <input
-                    type="text"
-                    name="user_phone"
-                    className="register-input"
-                    placeholder="Telefono..."
-                  />
-                </div>
-              </div>
-              <div className="section-container">
-                <div className="label-section">
-                  <label className="register-label">Correo</label>
-                  <input
-                    type="email"
-                    name="user_gmail"
-                    className="register-input"
-                    placeholder="Correo..."
-                  />
-                </div>
-                <div className="label-section">
-                  <label className="register-label">Contraseña</label>
-                  <input
-                    type="password"
-                    name="user_password"
-                    className="register-input"
-                    placeholder="Contraseña..."
-                  />
+                  <label className="register-label">Horario</label>
+                  <select name="id_schedule" className="register-input" onChange={handleChange}>
+                    <option value={formValues.id_schedule}>Valor Inicial</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
                 </div>
               </div>
               <div className="button-section">
@@ -146,6 +223,52 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
               </div>
             </form>
           </div>
+          {createError && <p style={{ color: "red" }}>{createError}</p>}
+        </>
+      )}
+      {showFormUpdate && (
+        <>
+          <div className="create-container">
+            <form noValidate onSubmit={handleUpdate}>
+              <h3>Formulario Actualizar Cita</h3>
+              <div className="section-container">
+                <div className="label-section">
+                  <label className="register-label">Fecha Cita</label>
+                  <input
+                    type="date"
+                    name="date"
+                    className="register-input"
+                    value={formValues.date}
+                    onChange={handleChangeUpdate}
+                  />
+                </div>
+                <div className="label-section">
+                  <label className="register-label">Tratamiento</label>
+                  <select name="id_treatment" className="register-input" onChange={handleChangeUpdate}>
+                    <option value={formValues.id_treatment}>Valor Inicial</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+                </div>
+                <div className="label-section">
+                  <label className="register-label">Horario</label>
+                  <select name="id_schedule" className="register-input" onChange={handleChangeUpdate}>
+                    <option value={formValues.id_schedule}>Valor Inicial</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select>
+                </div>
+              </div>
+              <div className="button-section">
+                <button className="btn-register">Send</button>
+              </div>
+            </form>
+          </div>
+          {createError && <p style={{ color: "red" }}>{createError}</p>}
         </>
       )}
     </div>
