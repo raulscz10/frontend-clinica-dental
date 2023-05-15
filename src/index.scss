@@ -13,3 +13,39 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+.update {
+  color: blue;
+}
+
+.delete {
+  color: red;
+}
+
+.createSection {
+  text-align: right;
+
+  .btn-create {
+    font-size: 1.1em;
+    width: 150px;
+    height: 40px;
+    border-radius: 7px;
+    margin: 0.5em;
+    margin-top: 2em;
+    color: white;
+    background-color: #1e4263;
+
+    &:hover {
+      border: 2px solid black;
+      background-color: #3d85c6;
+      font-weight: bold;
+    }
+  }
+}
+
+.create-container {
+  width: 100%;
+  margin: 2em;
+  text-align: center;
+  border: 2px solid black;
+}

@@ -35,4 +35,14 @@ userService.getAllDatesUsers = async (token, id) => {
   return(await axios.get(global.BASE_URL + `/api/customer/viewDates/${id}`,config)).data;
 };
 
+userService.deleteDate = async (token, id) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return (await axios.delete(global.BASE_URL + `/api/customer/deleteUserDates/${id}`, config)).data;
+};
+
 export default userService;

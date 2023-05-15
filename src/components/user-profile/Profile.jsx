@@ -47,6 +47,7 @@ function Profile({ profile }) {
       user_gmail: formValues.user_gmail,
     };
     updateMyProfile(authState.userInfo.id, credentials);
+    window.location.reload();
   };
 
   const handleChange = (e) => {
