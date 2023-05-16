@@ -49,7 +49,7 @@ userService.createUserDate = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-    },
+    }
   };
 
   return (await axios.post(global.BASE_URL + `/api/customer/newUserDate`, config)).data;
@@ -62,7 +62,7 @@ userService.updateDate = async (token, id) => {
     },
   };
 
-  return (await axios.delete(global.BASE_URL + `/api/customer/updateUserDate/${id}`, config)).data;
+  return (await axios.put(global.BASE_URL + `/api/customer/updateUserDate/${id}`, config)).data;
 };
 
 export default userService;

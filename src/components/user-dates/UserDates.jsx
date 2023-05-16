@@ -58,7 +58,7 @@ function UserDates({
       id_inquiries: 1,
     };
     handleUpdateDate(credentials);
-    window.location.reload();
+    //window.location.reload();
   };
 
   const handleChangeUpdate = (e) => {
@@ -75,7 +75,6 @@ function UserDates({
         authState.userToken,
         dateId
       );
-      window.location.reload();
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -115,7 +114,7 @@ function UserDates({
       id_inquiries: 1,
     };
     createUserDate(credentials);
-    window.location.reload();
+    //window.location.reload();
   };
 
   const handleChange = (e) => {
@@ -128,6 +127,7 @@ function UserDates({
 
   const createUserDate = async () => {
     try {
+      console.log(authState.userToken);
       const response = await userService.createUserDate(authState.userToken);
       console.log(response); //TODO
       setCreateError(null);
@@ -215,48 +215,54 @@ function UserDates({
               <h3>Formulario Crear Cita</h3>
               <div className="section-container">
                 <div className="label-section">
-                  <label className="register-label">Fecha Cita</label>
-                  <input
-                    type="date"
-                    name="date"
-                    className="register-input"
-                    value={formValues.date}
-                    onChange={handleChange}
-                  />
+                  <label className="register-label">Fecha</label>
+                  <div>
+                    <input
+                      type="date"
+                      name="date"
+                      className="register-input"
+                      value={formValues.date}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="label-section">
                   <label className="register-label">Tratamiento</label>
-                  <select
-                    name="id_treatment"
-                    className="register-input"
-                    onChange={handleChange}
-                  >
-                    <option value={formValues.id_treatment}>
-                      Selecciona una opción
-                    </option>
-                    {treatments.map((treatment, index) => (
-                      <option key={index} value={treatment.id}>
-                        {treatment.name_treatment}
+                  <div>
+                    <select
+                      name="id_treatment"
+                      className="register-input"
+                      onChange={handleChange}
+                    >
+                      <option value={formValues.id_treatment}>
+                        Selecciona una opción
                       </option>
-                    ))}
-                  </select>
+                      {treatments.map((treatment, index) => (
+                        <option key={index} value={treatment.id}>
+                          {treatment.name_treatment}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <div className="label-section">
                   <label className="register-label">Horario</label>
-                  <select
-                    name="id_schedule"
-                    className="register-input"
-                    onChange={handleChange}
-                  >
-                    <option value={formValues.id_schedule}>
-                      Selecciona una opción
-                    </option>
-                    {schedules.map((schedule, index) => (
-                      <option key={index} value={schedule.id}>
-                        {schedule.schedule_ini}-{schedule.schedule_fi}
+                  <div>
+                    <select
+                      name="id_schedule"
+                      className="register-input"
+                      onChange={handleChange}
+                    >
+                      <option value={formValues.id_schedule}>
+                        Selecciona una opción
                       </option>
-                    ))}
-                  </select>
+                      {schedules.map((schedule, index) => (
+                        <option key={index} value={schedule.id}>
+                          {schedule.schedule_ini}-{schedule.schedule_fi}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="button-section">
@@ -275,45 +281,53 @@ function UserDates({
               <div className="section-container">
                 <div className="label-section">
                   <label className="register-label">Fecha Cita</label>
-                  <input
-                    type="date"
-                    name="date"
-                    className="register-input"
-                    value={formValues.date}
-                    onChange={handleChangeUpdate}
-                  />
+                  <div>
+                    <input
+                      type="date"
+                      name="date"
+                      className="register-input"
+                      value={formValues.date}
+                      onChange={handleChangeUpdate}
+                    />
+                  </div>
                 </div>
                 <div className="label-section">
                   <label className="register-label">Tratamiento</label>
+                  <div>
                   <select
-                    name="id_treatment"
-                    className="register-input"
-                    onChange={handleChangeUpdate}
-                  >
-                    <option value={formValues.id_treatment}>
-                      Valor Inicial
-                    </option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                  </select>
+                      name="id_treatment"
+                      className="register-input"
+                      onChange={handleChange}
+                    >
+                      <option value={formValues.id_treatment}>
+                        Selecciona una opción
+                      </option>
+                      {treatments.map((treatment, index) => (
+                        <option key={index} value={treatment.id}>
+                          {treatment.name_treatment}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
                 <div className="label-section">
                   <label className="register-label">Horario</label>
+                  <div>
                   <select
-                    name="id_schedule"
-                    className="register-input"
-                    onChange={handleChangeUpdate}
-                  >
-                    <option value={formValues.id_schedule}>
-                      Valor Inicial
-                    </option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                  </select>
+                      name="id_schedule"
+                      className="register-input"
+                      onChange={handleChange}
+                    >
+                      <option value={formValues.id_schedule}>
+                        Selecciona una opción
+                      </option>
+                      {schedules.map((schedule, index) => (
+                        <option key={index} value={schedule.id}>
+                          {schedule.schedule_ini}-{schedule.schedule_fi}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
               <div className="button-section">
