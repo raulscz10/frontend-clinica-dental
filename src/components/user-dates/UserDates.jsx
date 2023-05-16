@@ -5,7 +5,14 @@ import userService from "../../_services/userService";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
+function UserDates({
+  dates,
+  onChange,
+  dateId,
+  showDeleteIcon,
+  schedules,
+  treatments,
+}) {
   //HOOKS
   const [showForm, setShowForm] = useState(false);
 
@@ -24,7 +31,7 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
     id_treatment: "",
     id_patient: authState.userInfo.id,
     id_schedule: "",
-    id_inquiries: 1
+    id_inquiries: 1,
   };
 
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -48,7 +55,7 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
       id_treatment: formValueUpdate.id_treatment,
       id_patient: authState.userInfo.id,
       id_schedule: formValueUpdate.id_schedule,
-      id_inquiries: 1
+      id_inquiries: 1,
     };
     handleUpdateDate(credentials);
     window.location.reload();
@@ -64,7 +71,10 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
 
   const handleUpdateDate = async () => {
     try {
-      const response = await userService.updateDate(authState.userToken, dateId);
+      const response = await userService.updateDate(
+        authState.userToken,
+        dateId
+      );
       window.location.reload();
       console.log(response);
     } catch (error) {
@@ -75,7 +85,10 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
   //Eliminar
   const handleDelete = async () => {
     try {
-      const response = await userService.deleteDate(authState.userToken, dateId);
+      const response = await userService.deleteDate(
+        authState.userToken,
+        dateId
+      );
       window.location.reload();
       console.log(response);
     } catch (error) {
@@ -99,7 +112,7 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
       id_treatment: 2,
       id_patient: authState.userInfo.id,
       id_schedule: 2,
-      id_inquiries: 1
+      id_inquiries: 1,
     };
     createUserDate(credentials);
     window.location.reload();
@@ -147,22 +160,32 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
         </thead>
         <tbody>
           {dates.map((date) => (
-            <tr data-date-id={date.id} key={date.id} onClick={onChange} className="tr-table">
+            <tr
+              data-date-id={date.id}
+              key={date.id}
+              onClick={onChange}
+              className="tr-table"
+            >
               <td>{date.id}</td>
               <td>{date.inquiries_door}</td>
               <td>{date.date}</td>
-              <td>{date.schedule_ini}-{date.schedule_fi}</td>
+              <td>
+                {date.schedule_ini}-{date.schedule_fi}
+              </td>
               <td>{date.name_treatment}</td>
               <td>
-                {showDeleteIcon &&(
-                  <button className="btn-table update" onClick={handleShowFormUpdate}>
+                {showDeleteIcon && (
+                  <button
+                    className="btn-table update"
+                    onClick={handleShowFormUpdate}
+                  >
                     <RiBallPenLine className="icon" />
                   </button>
                 )}
               </td>
               <td>
-                {showDeleteIcon &&(
-                  <button className="btn-table delete" onClick={handleDelete} >
+                {showDeleteIcon && (
+                  <button className="btn-table delete" onClick={handleDelete}>
                     <RiDeleteBin2Line className="icon" />
                   </button>
                 )}
@@ -171,14 +194,18 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
           ))}
         </tbody>
       </table>
-      {!showForm &&(
+      {!showForm && (
         <div className="createSection">
-          <button className="btn-create" onClick={handleShowForm}>Crear Cita</button>
+          <button className="btn-create" onClick={handleShowForm}>
+            Crear Cita
+          </button>
         </div>
       )}
-      {showForm &&(
+      {showForm && (
         <div className="createSection">
-          <button className="btn-create" onClick={handleHiddeForm}>Crear Cita</button>
+          <button className="btn-create" onClick={handleHiddeForm}>
+            Crear Cita
+          </button>
         </div>
       )}
       {showForm && (
@@ -199,22 +226,36 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
                 </div>
                 <div className="label-section">
                   <label className="register-label">Tratamiento</label>
-                  <select name="id_treatment" className="register-input" onChange={handleChange}>
-                    <option value={formValues.id_treatment}>Valor Inicial</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                  <select
+                    name="id_treatment"
+                    className="register-input"
+                    onChange={handleChange}
+                  >
+                    <option value={formValues.id_treatment}>
+                      Selecciona una opción
+                    </option>
+                    {treatments.map((treatment, index) => (
+                      <option key={index} value={treatment.id}>
+                        {treatment.name_treatment}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="label-section">
                   <label className="register-label">Horario</label>
-                  <select name="id_schedule" className="register-input" onChange={handleChange}>
-                    <option value={formValues.id_schedule}>Valor Inicial</option>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                  <select
+                    name="id_schedule"
+                    className="register-input"
+                    onChange={handleChange}
+                  >
+                    <option value={formValues.id_schedule}>
+                      Selecciona una opción
+                    </option>
+                    {schedules.map((schedule, index) => (
+                      <option key={index} value={schedule.id}>
+                        {schedule.schedule_ini}-{schedule.schedule_fi}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
@@ -244,8 +285,14 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
                 </div>
                 <div className="label-section">
                   <label className="register-label">Tratamiento</label>
-                  <select name="id_treatment" className="register-input" onChange={handleChangeUpdate}>
-                    <option value={formValues.id_treatment}>Valor Inicial</option>
+                  <select
+                    name="id_treatment"
+                    className="register-input"
+                    onChange={handleChangeUpdate}
+                  >
+                    <option value={formValues.id_treatment}>
+                      Valor Inicial
+                    </option>
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="mercedes">Mercedes</option>
@@ -254,8 +301,14 @@ function UserDates({ dates, onChange, dateId, showDeleteIcon }) {
                 </div>
                 <div className="label-section">
                   <label className="register-label">Horario</label>
-                  <select name="id_schedule" className="register-input" onChange={handleChangeUpdate}>
-                    <option value={formValues.id_schedule}>Valor Inicial</option>
+                  <select
+                    name="id_schedule"
+                    className="register-input"
+                    onChange={handleChangeUpdate}
+                  >
+                    <option value={formValues.id_schedule}>
+                      Valor Inicial
+                    </option>
                     <option value="volvo">Volvo</option>
                     <option value="saab">Saab</option>
                     <option value="mercedes">Mercedes</option>

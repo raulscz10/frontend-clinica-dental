@@ -4,10 +4,13 @@ import { UserDate } from "../../components";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import userService from "../../_services/userService";
+import infoService from "../../_services/infoService";
 
 function UserDates() {
   //HOOKS
   const [dates, setDates] = useState([]);
+  const [schedules, setSchedules] = useState([]);
+  const [treatments, setTreatments] = useState([]);
   const [dateId, setDateId] = useState();
   const [showDeleteIcon, setShowDeleteIcon] = useState(false);
   const navigate = useNavigate();
@@ -17,10 +20,32 @@ function UserDates() {
   useEffect(() => {
     if (isUser) {
       getAllDatesUsers(authState.userToken, authState.userInfo.id);
+      getAllTreatments();
+      getAllSchedules();
     } else {
       navigate("/");
     }
   }, []);
+
+  const getAllSchedules = async () => {
+    try {
+      const response = await infoService.getAllSchedules();
+      console.log(response);
+      setSchedules(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllTreatments = async () => {
+    try {
+      const response = await infoService.getAllTreatments();
+      console.log(response);
+      setTreatments(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getAllDatesUsers = async (token, id) => {
     try {
@@ -57,7 +82,14 @@ function UserDates() {
       {isUser && (
         <>
           <h1>Mis Citas</h1>
-          <UserDate showDeleteIcon={showDeleteIcon} dateId={dateId} dates={newDates(dates)} onChange={handleUsersDate} />
+          <UserDate
+            showDeleteIcon={showDeleteIcon}
+            dateId={dateId}
+            dates={newDates(dates)}
+            onChange={handleUsersDate}
+            schedules={schedules}
+            treatments={treatments}
+          />
         </>
       )}
     </>
