@@ -12,7 +12,7 @@ function UserDates() {
   const [schedules, setSchedules] = useState([]);
   const [treatments, setTreatments] = useState([]);
   const [dateId, setDateId] = useState();
-  const [showDeleteIcon, setShowDeleteIcon] = useState(false);
+  const [showIcon, setShowIcon] = useState(false);
   const navigate = useNavigate();
   const authState = useSelector((state) => state.auth);
   const isUser = authState.userInfo.role == 3;
@@ -73,7 +73,7 @@ function UserDates() {
 
   const handleSingleUser = (dateId) => {
     console.log(dateId);
-    setShowDeleteIcon(true);
+    setShowIcon(true);
     setDateId(dateId);
   };
 
@@ -83,7 +83,7 @@ function UserDates() {
         <>
           <h1>Mis Citas</h1>
           <UserDate
-            showDeleteIcon={showDeleteIcon}
+            showIcon={showIcon}
             dateId={dateId}
             dates={newDates(dates)}
             onChange={handleUsersDate}

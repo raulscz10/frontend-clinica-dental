@@ -9,7 +9,7 @@ function UserDates({
   dates,
   onChange,
   dateId,
-  showDeleteIcon,
+  showIcon,
   schedules,
   treatments,
 }) {
@@ -57,7 +57,7 @@ function UserDates({
       id_schedule: formValueUpdate.id_schedule,
       id_inquiries: 1,
     };
-    handleUpdateDate(credentials);
+    handleUpdateDate(authState.userToken, credentials, dateId);
     //window.location.reload();
   };
 
@@ -69,10 +69,11 @@ function UserDates({
     });
   };
 
-  const handleUpdateDate = async () => {
+  const handleUpdateDate = async (token, credentials, dateId) => {
     try {
       const response = await userService.updateDate(
-        authState.userToken,
+        token,
+        credentials,
         dateId
       );
       console.log(response);
@@ -107,14 +108,14 @@ function UserDates({
   const handleCreate = (e) => {
     e.preventDefault();
     const credentials = {
-      date: "2023-04-18",
-      id_treatment: 2,
+      date: formValues.date,
+      id_treatment: formValues.id_treatment,
       id_patient: authState.userInfo.id,
-      id_schedule: 2,
+      id_schedule: formValues.id_schedule,
       id_inquiries: 1,
     };
-    createUserDate(credentials);
-    //window.location.reload();
+    createUserDate(authState.userToken, credentials);
+    window.location.reload();
   };
 
   const handleChange = (e) => {
@@ -125,16 +126,13 @@ function UserDates({
     });
   };
 
-  const createUserDate = async () => {
+  const createUserDate = async (token, credentials) => {
     try {
-      console.log(authState.userToken);
-      const response = await userService.createUserDate(authState.userToken);
-      console.log(response); //TODO
+      const response = await userService.createUserDate(token, credentials);
       setCreateError(null);
-      navigate("/");
     } catch (error) {
       console.log(error); //TODO
-      setCreateError(error.response.data.message);
+      setCreateError(error);
     }
   };
 
@@ -174,7 +172,7 @@ function UserDates({
               </td>
               <td>{date.name_treatment}</td>
               <td>
-                {showDeleteIcon && (
+                {showIcon && dateId &&(
                   <button
                     className="btn-table update"
                     onClick={handleShowFormUpdate}
@@ -184,11 +182,11 @@ function UserDates({
                 )}
               </td>
               <td>
-                {showDeleteIcon && (
-                  <button className="btn-table delete" onClick={handleDelete}>
-                    <RiDeleteBin2Line className="icon" />
-                  </button>
-                )}
+                  {showIcon && dateId &&(
+                    <button className="btn-table delete" onClick={handleDelete}>
+                      <RiDeleteBin2Line className="icon" />
+                    </button>
+                  )}
               </td>
             </tr>
           ))}

@@ -45,24 +45,42 @@ userService.deleteDate = async (token, id) => {
   return (await axios.delete(global.BASE_URL + `/api/customer/deleteUserDates/${id}`, config)).data;
 };
 
-userService.createUserDate = async (token) => {
+userService.createUserDate = async (token, credentials) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
+  };
+  
+  console.log(config);
+
+  const body = {
+    date: credentials.date,
+    id_treatment: credentials.id_treatment,
+    id_patient: credentials.id_patient,
+    id_schedule: credentials.id_schedule,
+    id_inquiries: credentials.id_inquiries,
   };
 
-  return (await axios.post(global.BASE_URL + `/api/customer/newUserDate`, config)).data;
+  return (await axios.post(global.BASE_URL + `/api/customer/newUserDate`, body, config)).data;
 };
 
-userService.updateDate = async (token, id) => {
+userService.updateDate = async (token, credentials, id) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  return (await axios.put(global.BASE_URL + `/api/customer/updateUserDate/${id}`, config)).data;
+  const body = {
+    date: credentials.date,
+    id_treatment: credentials.id_treatment,
+    id_patient: credentials.id_patient,
+    id_schedule: credentials.id_schedule,
+    id_inquiries: credentials.id_inquiries,
+  };
+
+  return (await axios.put(global.BASE_URL + `/api/customer/updateUserDate/${id}`, body, config)).data;
 };
 
 export default userService;
