@@ -57,6 +57,7 @@ function UserDates({
       id_schedule: formValueUpdate.id_schedule,
       id_inquiries: 1,
     };
+    console.log(credentials);
     handleUpdateDate(authState.userToken, credentials, dateId);
     //window.location.reload();
   };
@@ -251,11 +252,11 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option value={formValues.id_schedule}>
+                      <option>
                         Selecciona una opción
                       </option>
                       {schedules.map((schedule, index) => (
-                        <option key={index} value={schedule.id}>
+                        <option key={index} value={schedule.id_schedule}>
                           {schedule.schedule_ini}-{schedule.schedule_fi}
                         </option>
                       ))}
@@ -284,7 +285,7 @@ function UserDates({
                       type="date"
                       name="date"
                       className="register-input"
-                      value={formValues.date}
+                      value={formValueUpdate.date}
                       onChange={handleChangeUpdate}
                     />
                   </div>
@@ -297,11 +298,11 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option value={formValues.id_treatment}>
+                      <option>
                         Selecciona una opción
                       </option>
                       {treatments.map((treatment, index) => (
-                        <option key={index} value={treatment.id}>
+                        <option key={index} value={formValueUpdate.id_treatment}>
                           {treatment.name_treatment}
                         </option>
                       ))}
@@ -316,11 +317,11 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option value={formValues.id_schedule}>
+                      <option>
                         Selecciona una opción
                       </option>
                       {schedules.map((schedule, index) => (
-                        <option key={index} value={schedule.id}>
+                        <option key={index} value={formValueUpdate.id_schedule}>
                           {schedule.schedule_ini}-{schedule.schedule_fi}
                         </option>
                       ))}

@@ -1,114 +1,94 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
+<a name="top"></a>
 
-<h3 align="center">frontend-clinica-dental</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
+<h1 align="center">
+  <br>🦷 Dental Clinic Frontend 🦷
+</h1>
 
 ---
 
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
-
-## 📝 Table of Contents
-
 - [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
 
-## 🧐 About <a name = "about"></a>
+- [Instructions](#instructions)
 
-Write about 1-2 paragraphs describing the purpose of your project.
+- [Screenshots](#images)
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+- [Tools](#tools)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+---
 
-### Prerequisites
+<a name="about"></a>
 
-What things you need to install the software and how to install them.
+## About :speech_balloon:
 
-```
-Give examples
-```
+The purpose of this design is to recreate the frontend part of my Dental Clinic.
 
-### Installing
+In this website you could register as a dentist or as a client and then login or logout.
 
-A step by step series of examples that tell you how to get a development env running.
+As a dentist and patient you could see your profile, view your appointments or update your information.
 
-Say what the step will be
+If you are a client you could create a new appointment, modify or delete it.
 
-```
-Give the example
-```
+And as an Admin you could see all the applications users (Patients and Admins).
 
-And repeat
+<a name="instructions"></a>
 
-```
-until finished
-```
+## Instructions 📝
 
-End with an example of getting some data out of the system or using it for a little demo.
+The first step is to clone the repository and install the project dependencies.
 
-## 🔧 Running the tests <a name = "tests"></a>
+### `npm i`
 
-Explain how to run the automated tests for this system.
+Run the server.
 
-### Break down into end to end tests
+### `npm run dev`
 
-Explain what these tests test and why
+<br>
 
-```
-Give an example
-```
+On the other side, you will need to clone the backend from [this repository](https://github.com/raulscz10/clinica-dental) and follow its instructions to run it.
 
-### And coding style tests
+<a name="images"></a>
 
-Explain what these tests test and why
+## Screenshots 📸
 
-```
-Give an example
-```
+Home
 
-## 🎈 Usage <a name="usage"></a>
+<img src="public/images/home.JPG">
 
-Add notes about how to use the system.
+Login
 
-## 🚀 Deployment <a name = "deployment"></a>
+<img src="public/images/login.JPG" >
 
-Add additional notes about how to deploy this on a live system.
+Register form.
 
-## ⛏️ Built Using <a name = "built_using"></a>
+<img src="public/images/registro.JPG">
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+Profile
 
-## ✍️ Authors <a name = "authors"></a>
+<img src="public/images/myProfile.JPG">
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+User Dates
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+<img src="public/images/dates.JPG">
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+Update User Dates
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+<img src="public/images/datesUpdate.JPG">
+
+<a name="tools"></a>
+
+## Stack 🔧
+
+<div align="center">
+<a href="https://es.react.dev/">
+    <img src= "https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+</a>
+<a href="https://sass-lang.com/">
+    <img src= "https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"/>
+</a>
+<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
+    <img src= "https://img.shields.io/badge/javascipt-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
+</a>
+<a href="https://nodejs.org/es">
+    <img src= "https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
+</a>
+ </div>

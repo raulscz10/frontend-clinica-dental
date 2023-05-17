@@ -18,7 +18,6 @@ function DatesList({ dates }) {
             <th className="th-table">Tratamiento</th>
             <th className="th-table">Paciente</th>
             <th className="th-table">Horario</th>
-            <th className="th-table">Consulta</th>
           </tr>
         </thead>
         <tbody>
@@ -26,10 +25,9 @@ function DatesList({ dates }) {
             <tr key={date.id} className="tr-table">
               <td>{date.id}</td>
               <td>{dateFormat(date.date)}</td>
-              <td>{date.id_treatment}</td>
-              <td>{date.id_patient}</td>
-              <td>{date.id_schedule}</td>
-              <td>{date.id_inquiries}</td>
+              <td>{date.name_treatment}</td>
+              <td>{date.user_name} {date.user_surname}</td>
+              <td>{date.schedule_ini}-{date.schedule_fi}</td>
             </tr>
           ))}
         </tbody>

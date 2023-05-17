@@ -43,7 +43,7 @@ function Admin() {
   const getAllUsers = async (token) => {
     try {
       const response = await adminService.getAllUsers(token);
-      console.log(response);
+      //console.log(response);
       setUsers(response);
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ function Admin() {
   const getAllRoles = async (token) => {
     try {
       const response = await adminService.getAllRoles(token);
-      console.log(response);
+      //console.log(response);
       setRoles(response);
     } catch (error) {
       console.log(error);
@@ -63,7 +63,7 @@ function Admin() {
   const getAllTreatments = async (token) => {
     try {
       const response = await adminService.getAllTreatments(token);
-      console.log(response);
+      //console.log(response);
       setTreatments(response);
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ function Admin() {
   const getAllDirections = async (token) => {
     try {
       const response = await adminService.getAllDirections(token);
-      console.log(response);
+      //console.log(response);
       setDirections(response);
     } catch (error) {
       console.log(error);
@@ -93,7 +93,7 @@ function Admin() {
   const getAllSchedules = async (token) => {
     try {
       const response = await adminService.getAllSchedules(token);
-      console.log(response);
+      //console.log(response);
       setSchedules(response);
     } catch (error) {
       console.log(error);
@@ -103,13 +103,23 @@ function Admin() {
   const getAllInquiries = async (token) => {
     try {
       const response = await adminService.getAllInquiries(token);
-      console.log(response);
+      //console.log(response);
       setInquiries(response);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const newDates = (dates) =>
+    dates.map((date) => {
+      date.name_treatment = date.treatment.name_treatment;
+      date.schedule_ini = date.schedule.schedule_ini;
+      date.schedule_fi = date.schedule.schedule_fi;
+      date.inquiries_door = date.inquirie.inquiries_door;
+      date.user_name = date.patient.user_name,
+      date.user_surname = date.patient.user_surname
+      return date;
+    });
   return (
     <>
       {isAdmin && (
@@ -118,10 +128,10 @@ function Admin() {
           <RolesList roles={roles} />
           <DirectionsList directions={directions} />
           <UsersList users={users} />
-          <InquiriesList inquiries={inquiries} />
+          {/* <InquiriesList inquiries={inquiries} /> */}
           <SchedulesList schedules={schedules} />
           <TreatmentsList treatments={treatments} />
-          <DatesList dates={dates} />
+          <DatesList dates={newDates(dates)} />
         </>
       )}
     </>
