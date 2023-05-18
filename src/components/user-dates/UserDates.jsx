@@ -35,7 +35,7 @@ function UserDates({
   };
 
   const [formValues, setFormValues] = useState(initialFormValues);
-  const [formValueUpdate, setFormValuesUpdate] = useState(initialFormValues);
+  const [formValueUpdate, setFormValuesUpdate] = useState({});
 
   useEffect(() => {
     if (!isUser) {
@@ -54,7 +54,7 @@ function UserDates({
       date: formValueUpdate.date,
       id_treatment: formValueUpdate.id_treatment,
       id_patient: authState.userInfo.id,
-      id_schedule: formValueUpdate.id_schedule,
+      id_schedule: formValueUpdate.id,
       id_inquiries: 1,
     };
     console.log(credentials);
@@ -298,11 +298,11 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option>
+                      <option value={formValueUpdate.id_treatment}>
                         Selecciona una opción
                       </option>
                       {treatments.map((treatment, index) => (
-                        <option key={index} value={formValueUpdate.id_treatment}>
+                        <option key={index} value={treatment.id}>
                           {treatment.name_treatment}
                         </option>
                       ))}
@@ -317,11 +317,11 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option>
+                      <option value={formValueUpdate.id_schedule}>
                         Selecciona una opción
                       </option>
                       {schedules.map((schedule, index) => (
-                        <option key={index} value={formValueUpdate.id_schedule}>
+                        <option key={index} value={schedule.id}>
                           {schedule.schedule_ini}-{schedule.schedule_fi}
                         </option>
                       ))}
