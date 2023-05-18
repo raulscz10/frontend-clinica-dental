@@ -52,7 +52,7 @@ function UserDates({
     e.preventDefault();
     const credentials = {
       date: formValueUpdate.date,
-      id_treatment: formValueUpdate.id_treatment,
+      id_treatment: formValueUpdate.id,
       id_patient: authState.userInfo.id,
       id_schedule: formValueUpdate.id,
       id_inquiries: 1,
@@ -298,7 +298,7 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option value={formValueUpdate.id_treatment}>
+                      <option>
                         Selecciona una opción
                       </option>
                       {treatments.map((treatment, index) => (
@@ -317,7 +317,7 @@ function UserDates({
                       className="register-input"
                       onChange={handleChange}
                     >
-                      <option value={formValueUpdate.id_schedule}>
+                      <option>
                         Selecciona una opción
                       </option>
                       {schedules.map((schedule, index) => (
