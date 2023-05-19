@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./userDates.scss";
 import { RiDeleteBin2Line, RiBallPenLine } from "react-icons/ri";
 import userService from "../../_services/userService";
+import infoService from "../../_services/infoService";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -59,7 +60,7 @@ function UserDates({
     };
     console.log(credentials);
     handleUpdateDate(authState.userToken, credentials, dateId);
-    //window.location.reload();
+    window.location.reload();
   };
 
   const handleChangeUpdate = (e) => {
@@ -134,6 +135,36 @@ function UserDates({
     } catch (error) {
       console.log(error); //TODO
       setCreateError(error);
+    }
+  };
+
+  const getAllSchedules = async () => {
+    try {
+      const response = await infoService.getAllSchedules();
+      console.log(response);
+      setSchedules(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllTreatments = async () => {
+    try {
+      const response = await infoService.getAllTreatments();
+      console.log(response);
+      setTreatments(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAllDatesUsers = async (token, id) => {
+    try {
+      const response = await userService.getAllDatesUsers(token, id);
+      console.log(response);
+      setDates(response);
+    } catch (error) {
+      console.log(error);
     }
   };
 

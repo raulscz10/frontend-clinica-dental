@@ -32,7 +32,7 @@ function Header() {
         <ul className="navbar-nav">
           <li className="nav-item">
             <NavLink to="/">
-              <RiHome4Line className="icon" />
+              <RiHome4Line className="icon home" />
               Home
             </NavLink>
           </li>
@@ -40,7 +40,7 @@ function Header() {
             <>
               <li className="nav-item">
                 <NavLink to="/admin">
-                  <RiAdminLine className="icon" />
+                  <RiAdminLine className="icon admin" />
                   Admin
                 </NavLink>
               </li>
@@ -56,7 +56,7 @@ function Header() {
             </>
           )}
           <li className="nav-item">
-            <NavLink to="/about">About Us</NavLink>
+            <NavLink to="/about">About <span className="none">Us</span></NavLink>
           </li>
         </ul>
         <ul className="navbar-nav">
@@ -64,7 +64,7 @@ function Header() {
             <>
               <li className="nav-item">
                 <NavLink to="/login">
-                  <MdOutlineLogin className="icon" />
+                  <MdOutlineLogin className="icon login" />
                   Login
                 </NavLink>
               </li>
@@ -83,13 +83,13 @@ function Header() {
                 <ul className="dropdown-menu">
                   <li className="dropdown-item">
                     <NavLink to="/profile">
-                      <MdPersonOutline className="icon" />
+                      <MdPersonOutline className="icon myProfile" />
                       Profile
                     </NavLink>
                   </li>
                   <li className="dropdown-item">
                     <a onClick={handleLogout}>
-                      <MdOutlineLogout className="icon" />
+                      <MdOutlineLogout className="icon logout" />
                       Logout
                     </a>
                   </li>

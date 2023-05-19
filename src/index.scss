@@ -241,7 +241,6 @@ body{
         justify-content: center;
       }
 
-      
     }
     .update-container{
       width: 100%;
@@ -258,14 +257,13 @@ body{
         width: 100%;
         justify-content: center;
         flex-direction: column;
-        
+
         .label-section{
           width: 100%;
           display: flex;
           justify-content: center;
           flex-direction: column;
           margin: 0;
-          
 
           .register-label{
             width: 100%;
@@ -347,6 +345,46 @@ body{
 
     &:hover {
       color: #285e8e;
+    }
+  }
+
+  //Estilos Responsive Header
+  .Header{
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85em;
+    margin-right: 3em;
+
+    .navbar{
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      .navbar-nav{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        .nav-item{
+          width: 100%;
+
+          .none{
+            display: none;
+          }
+        }
+      }
+
+      .dropdown-menu{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        .dropdown-item{
+          width: 100%;
+        }
+
+      }
     }
   }
 }
