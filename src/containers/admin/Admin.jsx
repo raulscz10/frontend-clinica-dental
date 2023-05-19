@@ -43,7 +43,6 @@ function Admin() {
   const getAllUsers = async (token) => {
     try {
       const response = await adminService.getAllUsers(token);
-      //console.log(response);
       setUsers(response);
     } catch (error) {
       console.log(error);
@@ -53,7 +52,6 @@ function Admin() {
   const getAllRoles = async (token) => {
     try {
       const response = await adminService.getAllRoles(token);
-      //console.log(response);
       setRoles(response);
     } catch (error) {
       console.log(error);
@@ -63,7 +61,6 @@ function Admin() {
   const getAllTreatments = async (token) => {
     try {
       const response = await adminService.getAllTreatments(token);
-      //console.log(response);
       setTreatments(response);
     } catch (error) {
       console.log(error);
@@ -73,7 +70,6 @@ function Admin() {
   const getAllDates = async (token) => {
     try {
       const response = await adminService.getAllDates(token);
-      console.log(response);
       setDates(response);
     } catch (error) {
       console.log(error);
@@ -83,7 +79,6 @@ function Admin() {
   const getAllDirections = async (token) => {
     try {
       const response = await adminService.getAllDirections(token);
-      //console.log(response);
       setDirections(response);
     } catch (error) {
       console.log(error);
@@ -93,7 +88,6 @@ function Admin() {
   const getAllSchedules = async (token) => {
     try {
       const response = await adminService.getAllSchedules(token);
-      //console.log(response);
       setSchedules(response);
     } catch (error) {
       console.log(error);
@@ -103,7 +97,6 @@ function Admin() {
   const getAllInquiries = async (token) => {
     try {
       const response = await adminService.getAllInquiries(token);
-      //console.log(response);
       setInquiries(response);
     } catch (error) {
       console.log(error);

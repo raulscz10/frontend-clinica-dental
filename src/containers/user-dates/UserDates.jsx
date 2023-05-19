@@ -30,7 +30,6 @@ function UserDates() {
   const getAllSchedules = async () => {
     try {
       const response = await infoService.getAllSchedules();
-      console.log(response);
       setSchedules(response);
     } catch (error) {
       console.log(error);
@@ -40,7 +39,6 @@ function UserDates() {
   const getAllTreatments = async () => {
     try {
       const response = await infoService.getAllTreatments();
-      console.log(response);
       setTreatments(response);
     } catch (error) {
       console.log(error);
@@ -50,7 +48,6 @@ function UserDates() {
   const getAllDatesUsers = async (token, id) => {
     try {
       const response = await userService.getAllDatesUsers(token, id);
-      console.log(response);
       setDates(response);
     } catch (error) {
       console.log(error);
@@ -72,7 +69,6 @@ function UserDates() {
   };
 
   const handleSingleUser = (dateId) => {
-    console.log(dateId);
     setShowIcon(true);
     setDateId(dateId);
   };

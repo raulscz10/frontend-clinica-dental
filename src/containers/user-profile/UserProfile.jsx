@@ -16,7 +16,6 @@ function UserProfile() {
   const viewMyProfile = async (id) => {
     try{
       const response = await userService.viewMyProfile(id);
-      console.log(response);
       setProfile(response);
     }catch(error){
       console.log(error);

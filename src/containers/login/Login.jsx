@@ -56,7 +56,6 @@ function Login() {
       setLoginError(null);
       updateAuthStoreStateLogIn(token);
     } catch (error) {
-      console.log(error);
       setLoginError(error.response.data.message);
     }
   };

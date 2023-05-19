@@ -48,7 +48,6 @@ function Register() {
       setSignInError(null);
       navigate("/login");
     } catch (error) {
-      console.log(error);
       setSignInError(error.response.data.message);
     }
   };

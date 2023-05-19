@@ -61,11 +61,9 @@ function Profile({ profile }) {
   const updateMyProfile = async (id, credentials) => {
     try {
       const response = await userService.updateMyProfile(id, credentials);
-      console.log(response); //TODO
       setUpdateError(null);
       navigate("/");
     } catch (error) {
-      console.log(error); //TODO
       setUpdateError(error.response.data.message);
     }
   };

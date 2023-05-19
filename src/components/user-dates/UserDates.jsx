@@ -58,7 +58,6 @@ function UserDates({
       id_schedule: formValueUpdate.id,
       id_inquiries: 1,
     };
-    console.log(credentials);
     handleUpdateDate(authState.userToken, credentials, dateId);
     window.location.reload();
   };
@@ -78,7 +77,6 @@ function UserDates({
         credentials,
         dateId
       );
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -92,7 +90,6 @@ function UserDates({
         dateId
       );
       window.location.reload();
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -133,38 +130,7 @@ function UserDates({
       const response = await userService.createUserDate(token, credentials);
       setCreateError(null);
     } catch (error) {
-      console.log(error); //TODO
       setCreateError(error);
-    }
-  };
-
-  const getAllSchedules = async () => {
-    try {
-      const response = await infoService.getAllSchedules();
-      console.log(response);
-      setSchedules(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getAllTreatments = async () => {
-    try {
-      const response = await infoService.getAllTreatments();
-      console.log(response);
-      setTreatments(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getAllDatesUsers = async (token, id) => {
-    try {
-      const response = await userService.getAllDatesUsers(token, id);
-      console.log(response);
-      setDates(response);
-    } catch (error) {
-      console.log(error);
     }
   };
 
