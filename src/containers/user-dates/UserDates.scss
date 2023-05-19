@@ -1,0 +1,57 @@
+.delete-container {
+    width: 100%;
+    margin-top: 2em;
+    text-align: center;
+    border: 2px solid black;
+  
+    .section-container{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0.5em;
+      .label-section{
+          display: flex;
+          justify-content: center;
+          width: 33.33%;
+  
+          .register-label{
+              margin: 0.5em;
+              font-size: 1.1em;
+              font-weight: bold;
+              color: #18354f;
+          }
+  
+          .register-input{
+              width: 250px;
+              height: 30px;
+              border-radius: 7px;
+              color: white;
+              background-color: #1e4263;
+  
+              &::placeholder {
+                  color: white;
+              }
+          }
+      }
+  }
+  }
+
+  .button-section{
+    width: 100%;
+    margin: 0.5em;
+
+    .btn-register{
+        width: 250px;
+        height: 40px;
+        border-radius: 7px;
+        margin: 1em;
+        color: white;
+        background-color: #1e4263;
+
+        &:hover {
+          border: 2px solid black;
+          background-color: #3d85c6;
+          font-weight: bold;
+        }
+    }
+}

@@ -52,8 +52,6 @@ userService.createUserDate = async (token, credentials) => {
     },
   };
   
-  console.log(config);
-
   const body = {
     date: credentials.date,
     id_treatment: credentials.id_treatment,
@@ -61,6 +59,8 @@ userService.createUserDate = async (token, credentials) => {
     id_schedule: credentials.id_schedule,
     id_inquiries: credentials.id_inquiries,
   };
+
+  console.log(body);
 
   return (await axios.post(global.BASE_URL + `/api/customer/newUserDate`, body, config)).data;
 };

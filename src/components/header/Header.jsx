@@ -8,6 +8,7 @@ import {
   MdOutlineLogout,
   MdOutlineLogin,
   MdOutlineArrowDownward,
+  MdOutlineWatchLater
 } from "react-icons/md";
 
 import { RiAdminLine, RiHome4Line } from "react-icons/ri";
@@ -50,6 +51,7 @@ function Header() {
             <>
               <li className="nav-item">
                 <NavLink to="/citas">
+                  <MdOutlineWatchLater className="icon dates" />
                   Citas
                 </NavLink>
               </li>
